@@ -2,6 +2,7 @@ import 'package:app/app/env.dart';
 import 'package:app/app/navigator_util.dart';
 import 'package:app/app/on_generate_routes.dart';
 import 'package:app/themes/app_theme.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppTheme.myPrimarySwatch,
       ),
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)
+      ],
       builder: (context, child) {
         return ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, child!),
